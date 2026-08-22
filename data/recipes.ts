@@ -48,13 +48,11 @@ const base = [
   ["schoko-lava-cakes", "Kleine Schoko-Lava-Cakes", "Dessert", "Vegetarisch", 12, 8, 180, "Warme Schokoküchlein mit weichem Kern für besondere Momente.", ["100 g Zartbitterschokolade", "80 g Butter", "2 Eier", "50 g Zucker und 30 g Mehl"]],
 ] as const;
 
-const images = ["/heroes/hero-familie-airfryer.webp", "/heroes/hero-paar-date-night-airfryer.webp", "/heroes/hero-freunde-spieleabend-airfryer.webp", "/heroes/hero-mehrgenerationen-airfryer.webp"];
-
 export const recipes: Recipe[] = base.map((item, index) => ({
   slug: item[0], title: item[1], category: item[2], diet: item[3], prep: item[4], cook: item[5], temperature: item[6], intro: item[7], ingredients: [...item[8]],
   servings: 4,
   basket: index % 4 === 0 ? "ab 5 Litern" : index % 3 === 0 ? "ab 4 Litern" : "ab 3,5 Litern",
-  image: images[index % images.length],
+  image: `/recipes/${item[0]}.webp`,
   steps: [
     "Alle Zutaten vorbereiten und möglichst gleichmäßig portionieren. Den Airfryer bei Bedarf kurz vorheizen.",
     `Die vorbereiteten Zutaten locker in den Korb geben und bei ${item[6]} °C zunächst ${Math.max(5, Math.floor(item[5] / 2))} Minuten garen.`,
