@@ -28,6 +28,7 @@ import {
   productSlug,
   type Product,
 } from "@/lib/products";
+import { SITE_URL } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -102,6 +103,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${seoName}: Datencheck und passende Rezepte`,
       description,
       type: "website",
+      url: `/airfryer/${slug}`,
       images: [{ url: productImage(product), alt: product.titel }],
     },
     twitter: {
@@ -137,7 +139,7 @@ export default async function ProductPage({ params }: Props) {
     ["Max. Temperatur", product.maxTempC ? `${product.maxTempC} °C` : "Keine verlässliche Angabe"],
     ["Bauform", product.unterkategorie],
   ];
-  const canonical = `https://airfryer-finder-de.vercel.app/airfryer/${slug}`;
+  const canonical = `${SITE_URL}/airfryer/${slug}`;
   const productDescription = `${name} ist als ${product.unterkategorie} mit einer Eignung für ${answers.household} eingeordnet. Die Seite fasst belegte Produktdaten, Grenzen, Alternativen und passende Airfryer-Rezepte zusammen.`;
   const additionalProperty = [
     product.kapazitaetL ? { "@type": "PropertyValue", name: "Kapazität", value: `${product.kapazitaetL} Liter` } : null,
@@ -154,7 +156,7 @@ export default async function ProductPage({ params }: Props) {
         "@id": `${canonical}#product`,
         name: product.titel,
         description: productDescription,
-        image: [`https://airfryer-finder-de.vercel.app${productImage(product)}`],
+        image: [`${SITE_URL}${productImage(product)}`],
         sku: product.asin,
         category: product.unterkategorie,
         brand: { "@type": "Brand", name: product.marke },
@@ -180,8 +182,8 @@ export default async function ProductPage({ params }: Props) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Start", item: "https://airfryer-finder-de.vercel.app" },
-          { "@type": "ListItem", position: 2, name: "Airfryer", item: "https://airfryer-finder-de.vercel.app/airfryer" },
+          { "@type": "ListItem", position: 1, name: "Start", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Airfryer", item: `${SITE_URL}/airfryer` },
           { "@type": "ListItem", position: 3, name, item: canonical },
         ],
       },

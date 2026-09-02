@@ -14,12 +14,13 @@ Produktionsprüfung:
 ```bash
 pnpm lint
 pnpm build
+pnpm test:release
 ```
 
 ## Datenbasis
 
 Die Produktdaten wurden am 22.08.2026 erfasst. Preise, Bewertungen und Verfügbarkeit sind Momentaufnahmen. Fehlende technische Angaben werden nicht ergänzt oder geschätzt.
 
-## Vor Veröffentlichung ergänzen
+## Veröffentlichung
 
-Die echten Betreiberangaben für Impressum und Datenschutz müssen noch eingesetzt und rechtlich geprüft werden.
+Die Produktionsdomain ist `https://airfryer-finder.de`. Impressum, Datenschutz, Canonicals, Robots und Sitemap sind auf diesen veröffentlichten Betrieb ausgerichtet.

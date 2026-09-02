@@ -2,8 +2,74 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChefHat, ChevronRight, Clock3, Flame, Printer, Users } from "lucide-react";
+import { ChefHat, ChevronRight, Clock3, Flame, Users } from "lucide-react";
+import { PrintButton } from "@/components/print-button";
 import { getRecipe, recipes } from "@/data/recipes";
-type Props={params:Promise<{slug:string}>};
-export function generateStaticParams(){return recipes.map(r=>({slug:r.slug}))}export async function generateMetadata({params}:Props):Promise<Metadata>{const{slug}=await params;const r=getRecipe(slug);return r?{title:`${r.title} aus dem Airfryer`,description:`${r.intro} In ${r.prep+r.cook} Minuten bei ${r.temperature} °C.`}:{}}
-export default async function RecipePage({params}:Props){const{slug}=await params;const r=getRecipe(slug);if(!r)notFound();const jsonLd={"@context":"https://schema.org","@type":"Recipe",name:r.title,image:[`https://airfryer-finder-de.vercel.app${r.image}`],description:r.intro,prepTime:`PT${r.prep}M`,cookTime:`PT${r.cook}M`,recipeYield:`${r.servings} Portionen`,recipeIngredient:r.ingredients,recipeInstructions:r.steps.map(text=>({"@type":"HowToStep",text}))};return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/><article className="recipe-detail"><div className="shell breadcrumbs"><Link href="/">Start</Link><ChevronRight/><Link href="/rezepte">Rezepte</Link><ChevronRight/><span>{r.title}</span></div><div className="recipe-detail-hero"><Image src={r.image} alt={r.title} fill priority loading="eager" sizes="100vw"/><div className="recipe-title-card"><span>{r.category} · {r.diet}</span><h1>{r.title}</h1><p>{r.intro}</p><div><b><Clock3/> {r.prep+r.cook} Min.</b><b><Flame/> {r.temperature} °C</b><b><Users/> {r.servings} Portionen</b></div></div></div><div className="shell recipe-body"><aside className="recipe-facts"><h2>Auf einen Blick</h2><div><span>Vorbereitung</span><b>{r.prep} Minuten</b></div><div><span>Garzeit</span><b>{r.cook} Minuten</b></div><div><span>Korbgröße</span><b>{r.basket}</b></div><div><span>Temperatur</span><b>{r.temperature} °C</b></div><button type="button" className="button secondary print-button"><Printer/> Rezept drucken</button></aside><div className="recipe-instructions"><section><h2>Zutaten</h2><p className="serving-note">Für {r.servings} Portionen</p><ul className="ingredient-list">{r.ingredients.map(i=><li key={i}>{i}</li>)}</ul></section><section><h2>Zubereitung</h2><ol className="step-list">{r.steps.map((s,i)=><li key={s}><span>{i+1}</span><p>{s}</p></li>)}</ol></section><section className="cook-tip"><ChefHat/><div><h3>Knusper-Tipp</h3><p>{r.tip}</p></div></section><section><h2>Sicher genießen</h2><p>Garzeiten können je nach Gerät, Füllmenge und Größe der Zutaten abweichen. Prüfe den Garzustand vor dem Servieren. Geflügel und Hackfleisch vollständig durchgaren.</p></section></div></div></article></>}
+import { SITE_URL } from "@/lib/site";
+
+type Props = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return recipes.map((recipe) => ({ slug: recipe.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const recipe = getRecipe(slug);
+  if (!recipe) return {};
+  const description = `${recipe.intro} In ${recipe.prep + recipe.cook} Minuten bei ${recipe.temperature} °C.`;
+  return {
+    title: `${recipe.title} aus dem Airfryer`,
+    description,
+    alternates: { canonical: `/rezepte/${slug}` },
+    openGraph: { title: recipe.title, description, type: "article", url: `/rezepte/${slug}`, images: [{ url: recipe.image, alt: recipe.title }] },
+    twitter: { card: "summary_large_image", title: recipe.title, description, images: [recipe.image] },
+  };
+}
+
+export default async function RecipePage({ params }: Props) {
+  const { slug } = await params;
+  const recipe = getRecipe(slug);
+  if (!recipe) notFound();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    name: recipe.title,
+    url: `${SITE_URL}/rezepte/${slug}`,
+    image: [`${SITE_URL}${recipe.image}`],
+    description: recipe.intro,
+    prepTime: `PT${recipe.prep}M`,
+    cookTime: `PT${recipe.cook}M`,
+    recipeYield: `${recipe.servings} Portionen`,
+    recipeIngredient: recipe.ingredients,
+    recipeInstructions: recipe.steps.map((text) => ({ "@type": "HowToStep", text })),
+  };
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <article className="recipe-detail">
+        <div className="shell breadcrumbs"><Link href="/">Start</Link><ChevronRight /><Link href="/rezepte">Rezepte</Link><ChevronRight /><span>{recipe.title}</span></div>
+        <div className="recipe-detail-hero">
+          <Image src={recipe.image} alt={recipe.title} fill priority sizes="100vw" />
+          <div className="recipe-title-card"><span>{recipe.category} · {recipe.diet}</span><h1>{recipe.title}</h1><p>{recipe.intro}</p><div><b><Clock3 /> {recipe.prep + recipe.cook} Min.</b><b><Flame /> {recipe.temperature} °C</b><b><Users /> {recipe.servings} Portionen</b></div></div>
+        </div>
+        <div className="shell recipe-body">
+          <aside className="recipe-facts">
+            <h2>Auf einen Blick</h2>
+            <div><span>Vorbereitung</span><b>{recipe.prep} Minuten</b></div>
+            <div><span>Garzeit</span><b>{recipe.cook} Minuten</b></div>
+            <div><span>Korbgröße</span><b>{recipe.basket}</b></div>
+            <div><span>Temperatur</span><b>{recipe.temperature} °C</b></div>
+            <PrintButton />
+          </aside>
+          <div className="recipe-instructions">
+            <section><h2>Zutaten</h2><p className="serving-note">Für {recipe.servings} Portionen</p><ul className="ingredient-list">{recipe.ingredients.map((ingredient) => <li key={ingredient}>{ingredient}</li>)}</ul></section>
+            <section><h2>Zubereitung</h2><ol className="step-list">{recipe.steps.map((step, index) => <li key={step}><span>{index + 1}</span><p>{step}</p></li>)}</ol></section>
+            <section className="cook-tip"><ChefHat /><div><h3>Knusper-Tipp</h3><p>{recipe.tip}</p></div></section>
+            <section><h2>Sicher genießen</h2><p>Garzeiten können je nach Gerät, Füllmenge und Größe der Zutaten abweichen. Prüfe den Garzustand vor dem Servieren. Geflügel und Hackfleisch vollständig durchgaren.</p></section>
+          </div>
+        </div>
+      </article>
+    </>
+  );
+}
