@@ -1,9 +1,10 @@
+import { LiveAmazonPrice } from "@/components/live-amazon-price";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, ExternalLink } from "lucide-react";
-import { accessories, formatPrice, getProductBySlug, productImage, productSlug } from "@/lib/products";
+import { accessories, getProductBySlug, productImage, productSlug } from "@/lib/products";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -39,7 +40,7 @@ export default async function AccessoryDetail({ params }: Props) {
           <h1>{product.titel}</h1>
           <p>{product.kurzbeschreibung || "Zu diesem Zubehör liegen die aufgeführten Amazon-Produktdaten vor."}</p>
           {product.kapazitaetL ? <p><b>Angegebene Größe:</b> {product.kapazitaetL} Liter. Bitte prüfe die exakte Kompatibilität mit deinem Modell beim Anbieter.</p> : null}
-          <strong className="accessory-price">{formatPrice(product.preisEUR)}</strong>
+          <strong className="accessory-price">{<LiveAmazonPrice asin={product.asin} />} </strong>
           <small>Preisstand 22.08.2026</small>
           <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener" className="button affiliate-button">Preis bei Amazon prüfen <ExternalLink /></a>
           <p className="affiliate-note">Affiliate-Link. Produktdaten und Verfügbarkeit können sich ändern.</p>

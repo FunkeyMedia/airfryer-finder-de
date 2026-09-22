@@ -1,7 +1,8 @@
+import { LiveAmazonPrice } from "@/components/live-amazon-price";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BarChart3, Star } from "lucide-react";
-import { editorialScore, formatNumber, formatPrice, householdLabel, productImage, productSlug, type Product } from "@/lib/products";
+import { editorialScore, formatNumber, householdLabel, productImage, productSlug, type Product } from "@/lib/products";
 
 export function ProductCard({ product, rank }: { product: Product; rank?: number }) {
   return (
@@ -20,7 +21,7 @@ export function ProductCard({ product, rank }: { product: Product; rank?: number
           {product.zonen && <span>{product.zonen} {product.zonen === 1 ? "Zone" : "Zonen"}</span>}
           <span>{householdLabel(product.kapazitaetL)}</span>
         </div>
-        <div className="card-price"><strong>{formatPrice(product.preisEUR)}</strong><small>Stand 22.08.2026</small></div>
+        <div className="card-price"><strong>{<LiveAmazonPrice asin={product.asin} />} </strong><small>Live von Amazon</small></div>
         <div className="card-actions">
           <Link href={`/airfryer/${productSlug(product)}`} className="button primary">Details <ArrowRight size={17} /></Link>
           <Link href={`/vergleich?ids=${product.asin}`} className="icon-button" aria-label={`${product.marke} vergleichen`}><BarChart3 size={19} /></Link>

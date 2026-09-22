@@ -1,10 +1,11 @@
 "use client";
+import { LiveAmazonPrice } from "@/components/live-amazon-price";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { formatNumber, formatPrice, productImage, productSlug, type Product } from "@/lib/products";
+import { formatNumber, productImage, productSlug, type Product } from "@/lib/products";
 import { readComparisonIds, comparisonPath } from "@/lib/comparison-state";
 
 export function CompareTool({products}: {products: Product[]}) {
@@ -22,8 +23,8 @@ export function CompareTool({products}: {products: Product[]}) {
     try { await navigator.clipboard.writeText(url); setShare({path, copied: true, url: ""}); }
     catch { setShare({path, copied: false, url}); }
   }
-  const rows: [string, (p: Product) => string][] = [
-    ["Erfasster Preis", p => formatPrice(p.preisEUR)],
+  const rows: [string, (p: Product) => React.ReactNode][] = [
+    ["Aktueller Amazon-Preis", p => <LiveAmazonPrice asin={p.asin} />],
     ["Kapazität", p => p.kapazitaetL ? `${p.kapazitaetL} L` : "Keine Angabe"],
     ["Garzonen", p => p.zonen ? String(p.zonen) : "Keine Angabe"],
     ["Leistung", p => p.leistungW ? `${p.leistungW} W` : "Keine Angabe"],
@@ -49,6 +50,6 @@ export function CompareTool({products}: {products: Product[]}) {
         <strong>{p.marke} {p.modellcode}</strong><Link href={`/airfryer/${productSlug(p)}`}>Details & Händlerangebot ansehen</Link>
       </div>)}</div>{rows.map(([label,get]) => <div className="comparison-row" key={label}><b>{label}</b>{selected.map(p => <span key={p.asin}>{get(p)}</span>)}</div>)}</div>
     </> : <div className="empty-state"><h2>Wähle dein erstes Gerät</h2><p>Nutze das Auswahlfeld oben oder starte von einer Produktseite aus. Unbekannte Produktkennungen werden nicht übernommen.</p></div>}
-    <p className="note-box">Bewertungen, Preise und Verfügbarkeit stammen aus der Datenerfassung vom 22.08.2026 und können sich geändert haben. Der Link speichert deine Modellauswahl; er reserviert kein Angebot.</p>
+    <p className="note-box">Die angezeigten Preise werden über Amazon aktualisiert. Bewertungen stammen aus der Datenerfassung vom 22.08.2026. Der Link speichert deine Modellauswahl; er reserviert kein Angebot.</p>
   </section>;
 }

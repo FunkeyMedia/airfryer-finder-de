@@ -1,3 +1,4 @@
+import { LiveAmazonPrice } from "@/components/live-amazon-price";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -169,15 +170,6 @@ export default async function ProductPage({ params }: Props) {
                 reviewCount: product.anzahlBewertungen,
               }
             : undefined,
-        offers: product.preisEUR
-          ? {
-              "@type": "Offer",
-              priceCurrency: "EUR",
-              price: product.preisEUR,
-              availability: product.verfuegbar ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-              url: product.affiliateUrl,
-            }
-          : undefined,
       },
       {
         "@type": "BreadcrumbList",
@@ -230,7 +222,7 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               </div>
               <div className="price-panel">
-                <div><span>Erfasster Preis</span><strong>{formatPrice(product.preisEUR)}</strong><small>Momentaufnahme vom 22.08.2026</small></div>
+                <div><span>Aktueller Amazon-Preis</span><strong>{<LiveAmazonPrice asin={product.asin} />} </strong><small>Preis und Verfügbarkeit können sich ändern.</small></div>
                 <a href={product.affiliateUrl} target="_blank" rel="nofollow sponsored noopener" className="button affiliate-button">
                   Preis bei Amazon prüfen <ExternalLink size={18} />
                 </a>
