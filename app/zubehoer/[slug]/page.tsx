@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, ExternalLink } from "lucide-react";
-import { accessories, getProductBySlug, productImage, productSlug } from "@/lib/products";
+import { accessories, getProductBySlug, productImage, productPageTitle, productSlug } from "@/lib/products";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,12 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug(slug, accessories);
   if (!product) return {};
   const description = product.kurzbeschreibung || product.titel;
+  const title = productPageTitle(product);
   return {
-    title: `${product.marke} Airfryer-Zubehör`,
+    title,
     description,
     alternates: { canonical: `/zubehoer/${slug}` },
-    openGraph: { title: `${product.marke} Airfryer-Zubehör`, description, type: "website", url: `/zubehoer/${slug}`, images: [{ url: productImage(product), alt: product.titel }] },
-    twitter: { card: "summary_large_image", title: `${product.marke} Airfryer-Zubehör`, description, images: [productImage(product)] },
+    openGraph: { title, description, type: "website", url: `/zubehoer/${slug}`, images: [{ url: productImage(product), alt: product.titel }] },
+    twitter: { card: "summary_large_image", title, description, images: [productImage(product)] },
   };
 }
 

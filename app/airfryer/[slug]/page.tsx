@@ -22,10 +22,10 @@ import {
   devices,
   editorialScore,
   formatNumber,
-  formatPrice,
   getProductBySlug,
   householdLabel,
   productImage,
+  productPageTitle,
   productSlug,
   type Product,
 } from "@/lib/products";
@@ -89,8 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug(slug, devices);
   if (!product) return {};
 
-  const name = productName(product);
-  const seoName = shorten(name, 32);
+  const seoName = productPageTitle(product);
   const description = shorten(
     `${seoName} im Datencheck: ${product.kapazitaetL ? `${product.kapazitaetL} Liter, ` : ""}${product.zonen ? `${product.zonen} Garzonen, ` : ""}Eignung, Stärken, Grenzen, Preis und 3 passende Airfryer-Rezepte.`,
     155,

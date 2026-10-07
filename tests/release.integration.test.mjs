@@ -26,7 +26,7 @@ async function page(path) {
 }
 
 before(async () => {
-  server = spawn("pnpm", ["exec", "next", "start", "--hostname", "127.0.0.1", "--port", String(port)], {
+  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", String(port)], {
     cwd: process.cwd(),
     env: { ...process.env, NODE_ENV: "production" },
     stdio: "ignore",
@@ -110,7 +110,9 @@ test("every catalog item has a local image and a correctly tagged Amazon link", 
 test("every URL published in the sitemap returns HTTP 200", async () => {
   const sitemap = await page("/sitemap.xml");
   const paths = [...sitemap.matchAll(/<loc>https:\/\/airfryer-finder\.de([^<]*)<\/loc>/g)].map((match) => match[1] || "/");
-  assert.equal(paths.length, 313);
+  assert.equal(paths.length, 317);
+  assert.ok(!paths.includes("/impressum"));
+  assert.ok(!paths.includes("/datenschutz"));
   for (let index = 0; index < paths.length; index += 20) {
     const batch = paths.slice(index, index + 20);
     const responses = await Promise.all(batch.map(async (path) => [path, await fetch(`${baseUrl}${path}`)]));

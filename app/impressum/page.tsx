@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: "Impressum",
   description: "Impressum und Anbieterkennzeichnung von AirfryerFinder.de.",
   alternates: { canonical: "/impressum" },

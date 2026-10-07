@@ -38,6 +38,16 @@ export const devices = rawData.devices as Product[];
 export const accessories = rawData.accessories as Product[];
 export const allProducts = [...devices, ...accessories];
 
+export function productPageTitle(product: Product) {
+  const base = (item: Product) => {
+    const title = item.titel.replace(/\s+/g, " ").trim();
+    return title.length > 90 ? title.slice(0, 90).replace(/\s+\S*$/, "").trim() : title;
+  };
+  const title = base(product);
+  return allProducts.some((item) => item.asin !== product.asin && base(item) === title)
+    ? `${title} (${product.asin})` : title;
+}
+
 export function slugify(value: string) {
   return value
     .normalize("NFD")
