@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AdventCalendar } from "@/components/advent-calendar";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, BarChart3, Check, Clock3, CookingPot, Flame, Heart, Search, SlidersHorizontal, Sparkles, Users } from "lucide-react";
 import { ProductCard } from "@/components/product-card";
@@ -39,6 +40,8 @@ export default function Home() {
       </section>
 
       <section className="trust-strip"><div className="shell"><span><BadgeCheck /> {devices.length} Geräte analysiert</span><span><BarChart3 /> Vergleichbare Fakten</span><span><Heart /> Für echte Alltagsbedürfnisse</span><span><Clock3 /> Datenstand 22.08.2026</span></div></section>
+
+      <AdventCalendar />
 
       <section className="section shell">
         <SectionHeading kicker="Einfach einsteigen" title="Welcher Typ bist du?">Schon die Bauform macht im Alltag einen großen Unterschied. Wähle, was am ehesten zu dir passt.</SectionHeading>
