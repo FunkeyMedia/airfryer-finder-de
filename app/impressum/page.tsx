@@ -10,34 +10,30 @@ export const metadata: Metadata = {
 export default function Imprint() {
   return (
     <section className="inner-section shell prose-page">
-      <span className="eyebrow">Rechtliche Angaben</span>
+      <span className="eyebrow">Rechtliches</span>
       <h1>Impressum</h1>
 
       <h2>Angaben gemäß § 5 DDG</h2>
       <p>
-        Christopher Funke<br />
-        Einzelunternehmen<br />
-        Waldstr. 28<br />
-        63150 Heusenstamm<br />
+        Pascal Weyers<br />
+        Birkenwaldstr. 46<br />
+        63179 Obertshausen<br />
         Deutschland
       </p>
 
       <h2>Kontakt</h2>
       <p>
-        Telefon: <a href="tel:+491634772718">0163 4772718</a><br />
-        E-Mail: <a href="mailto:wir@funkeymedia.de">wir@funkeymedia.de</a>
+        E-Mail: <a href="mailto:pascal@funkeymedia.de">pascal@funkeymedia.de</a>
       </p>
 
-      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <h2>Umsatzsteuer-Identifikationsnummer</h2>
       <p>
-        Christopher Funke<br />
-        Waldstr. 28<br />
-        63150 Heusenstamm
+        Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE299749508
       </p>
 
-      <h2>Hinweis zu Händlerlinks</h2>
+      <h2>Haftung für Links</h2>
       <p>
-        AirfryerFinder.de enthält gekennzeichnete Affiliate-Links. Bei einem Kauf über einen solchen Link können wir eine Provision erhalten. Für Käuferinnen und Käufer ändert sich der Preis dadurch nicht.
+        Diese Website enthält gekennzeichnete Links zu externen Angeboten. Für deren Inhalte sind die jeweiligen Betreiber verantwortlich.
       </p>
     </section>
   );

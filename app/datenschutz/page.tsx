@@ -10,54 +10,54 @@ export const metadata: Metadata = {
 export default function Privacy() {
   return (
     <section className="inner-section shell prose-page">
-      <span className="eyebrow">Datenschutz</span>
+      <span className="eyebrow">Transparent erklärt</span>
       <h1>Datenschutzerklärung</h1>
-      <p>Stand: 2. September 2026</p>
+      <p>Stand: 9. Oktober 2026</p>
 
       <h2>1. Verantwortlicher</h2>
       <p>
-        Christopher Funke, Einzelunternehmen<br />
-        Waldstr. 28, 63150 Heusenstamm<br />
-        E-Mail: <a href="mailto:wir@funkeymedia.de">wir@funkeymedia.de</a><br />
-        Telefon: <a href="tel:+491634772718">0163 4772718</a>
+        Pascal Weyers<br />
+        Birkenwaldstr. 46<br />
+        63179 Obertshausen<br />
+        E-Mail: <a href="mailto:pascal@funkeymedia.de">pascal@funkeymedia.de</a>
       </p>
 
-      <h2>2. Hosting und Server-Logfiles</h2>
+      <h2>2. Hosting und Serverprotokolle</h2>
       <p>
-        Diese Website wird über Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA, bereitgestellt. Beim Aufruf der Website verarbeitet der Hostinganbieter technisch erforderliche Verbindungsdaten. Dazu können insbesondere IP-Adresse, Zeitpunkt, aufgerufene Seite, Referrer, Browser- und Geräteinformationen sowie Status- und Fehlerdaten gehören.
-      </p>
-      <p>
-        Die Verarbeitung dient der sicheren, stabilen und schnellen Bereitstellung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt im sicheren und zuverlässigen Betrieb dieses Angebots. Vercel beschreibt internationale Übermittlungen und die dabei eingesetzten Schutzmechanismen, darunter das EU-US Data Privacy Framework und Standardvertragsklauseln, in seiner <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> und im <a href="https://vercel.com/legal/dpa" target="_blank" rel="noopener noreferrer">Data Processing Addendum</a>.
+        Diese Website wird über Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, USA, bereitgestellt. Beim Aufruf verarbeitet Vercel technisch erforderliche Verbindungsdaten, insbesondere IP-Adresse, Zeitpunkt, angeforderte Adresse, Referrer, Browser- und Geräteinformationen sowie Statuscodes. Zweck ist die sichere und stabile Auslieferung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Soweit Vercel in unserem Auftrag verarbeitet, gilt ein Auftragsverarbeitungsvertrag. Übermittlungen in die USA werden insbesondere auf das EU-US Data Privacy Framework und ergänzend auf Standardvertragsklauseln gestützt.
       </p>
 
-      <h2>3. Airfryer-Finder und Vergleich</h2>
+      <h2>3. Finder-Zwischenstand</h2>
       <p>
-        Für den Finder ist keine Registrierung erforderlich. Deine Antworten und die ausgewählten Vergleichsgeräte werden im Browser verarbeitet und nicht als persönliches Nutzerprofil an uns übermittelt oder dauerhaft gespeichert. Beim Laden der Seiten fallen lediglich die unter „Hosting und Server-Logfiles“ beschriebenen technischen Daten an.
+        Der Produktfinder speichert Antworten und den aktuellen Schritt ausschließlich im lokalen Speicher deines Browsers. Diese Angaben werden nicht als Nutzerprofil an unseren Server übertragen. Du kannst sie über „Neu beginnen" oder die Website-Daten deines Browsers löschen.
       </p>
 
-      <h2>4. Cookies und Reichweitenmessung</h2>
+      <h2>4. Affiliate-Klicks</h2>
       <p>
-        Wir setzen auf dieser Website derzeit keine eigenen Analyse-, Marketing- oder Profiling-Dienste und keine einwilligungspflichtigen Cookies ein. Sollte sich dies ändern, werden diese Hinweise vor dem Einsatz angepasst und erforderliche Einwilligungen eingeholt.
+        Beim Klick auf einen gekennzeichneten Amazon-Link sendet die Website ein minimales Ereignis an unseren Server: Ereignistyp, interne Produkt-ID und Zeitpunkt. Der Ereignisinhalt enthält bewusst keinen Namen, keine E-Mail-Adresse und keine Finder-Antworten. Technisch notwendige Verbindungsdaten können beim Serveraufruf dennoch anfallen. Die Verarbeitung dient der aggregierten Nutzungsauswertung und der technischen Fehleranalyse auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
-      <h2>5. Amazon-Affiliate-Links</h2>
+      <h2>5. Weiterleitung zu Amazon</h2>
       <p>
-        Einige Links führen zu Amazon.de und enthalten eine Affiliate-Kennung. Erst wenn du einen solchen Link öffnest, verlässt du AirfryerFinder.de. Amazon kann dann Verbindungsdaten verarbeiten und Cookies oder ähnliche Technologien einsetzen. Die Affiliate-Kennung ermöglicht die Zuordnung eines vermittelten Kaufs; wir erhalten gegebenenfalls eine Provision, jedoch keine personenbezogenen Bestelldaten von Amazon. Für die weitere Datenverarbeitung ist Amazon verantwortlich. Es gelten die <a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ" target="_blank" rel="noopener noreferrer">Datenschutzhinweise von Amazon</a>.
+        Affiliate-Links öffnen Amazon.de in einem neuen Tab. Erst mit dem Klick verlässt du unsere Website. Amazon verarbeitet Daten ab diesem Zeitpunkt nach eigener Verantwortung und kann den Partner-Tag onlinestarkei-21 zuordnen.
       </p>
 
-      <h2>6. Kontaktaufnahme</h2>
+      <h2>6. Amazon Creators API und Produktbilder</h2>
       <p>
-        Wenn du uns per E-Mail oder Telefon kontaktierst, verarbeiten wir die von dir mitgeteilten Angaben, um dein Anliegen zu beantworten. Je nach Inhalt erfolgt dies auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO oder Art. 6 Abs. 1 lit. f DSGVO. Die Daten werden gelöscht, wenn die Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+        Produkt-, Preis- und Verfügbarkeitsdaten werden serverseitig über die Amazon Creators API abgerufen und zeitlich begrenzt zwischengespeichert. Originalbilder werden direkt von Amazons Bildservern geladen. Dabei wird technisch bedingt die IP-Adresse des Browsers an Amazon übermittelt.
       </p>
 
-      <h2>7. Deine Rechte</h2>
+      <h2>7. Reichweitenmessung, Cookies und weitere Dienste</h2>
       <p>
-        Du hast im Rahmen der gesetzlichen Voraussetzungen das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Außerdem kannst du dich bei einer Datenschutzaufsichtsbehörde beschweren.
+        Wir nutzen Vercel Web Analytics, um zusammengefasst zu sehen, welche Seiten wie oft aufgerufen werden. Dabei werden keine Cookies gesetzt und keine Daten in deinem Browser gespeichert. Erfasst werden die aufgerufene Seite, die verweisende Seite, der Zeitpunkt sowie Land, Browser, Betriebssystem und Gerätetyp. Wiederholte Aufrufe am selben Tag werden nur über einen Hashwert aus der Anfrage erkannt, der nach 24 Stunden verworfen wird; ein Nutzerprofil entsteht nicht. Rechtsgrundlage ist unser berechtigtes Interesse an der Verbesserung des Angebots (Art. 6 Abs. 1 lit. f DSGVO).
+      </p>
+      <p>
+        Diese Website setzt selbst keine Marketing-Cookies und bettet keine Bewertungswidgets oder Social-Media-Tracker ein. Werden später weitere Analyse-, Kontakt- oder externe Dienste ergänzt, werden diese Hinweise vor ihrer Aktivierung aktualisiert und erforderliche Einwilligungen eingeholt.
       </p>
 
-      <h2>8. Aktualisierung dieser Hinweise</h2>
+      <h2>8. Speicherdauer und deine Rechte</h2>
       <p>
-        Wir passen diese Datenschutzerklärung an, wenn sich die eingesetzten Dienste oder die rechtlichen Anforderungen ändern. Maßgeblich ist die jeweils hier veröffentlichte Fassung.
+        Lokale Finder-Daten bleiben bestehen, bis du sie löschst. Technische Serverprotokolle werden nur so lange gespeichert, wie dies für Sicherheit und Fehleranalyse erforderlich ist. Nach Maßgabe der gesetzlichen Voraussetzungen bestehen Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Zudem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde, insbesondere beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit.
       </p>
     </section>
   );
