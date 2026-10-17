@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
@@ -20,5 +21,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#073763" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="de"><body className={`${manrope.variable} ${sora.variable}`}><a href="#main" className="skip-link">Zum Inhalt springen</a><SiteHeader /><main id="main">{children}</main><SiteFooter /></body></html>;
+  return <html lang="de"><body className={`${manrope.variable} ${sora.variable}`}><a href="#main" className="skip-link">Zum Inhalt springen</a><SiteHeader /><main id="main">{children}</main><SiteFooter /><aside className="affiliate-tracking-note" style={{textAlign:"center",padding:12,fontSize:12}}><a href="/amazon-klickstatistik.html">Amazon-Klickstatistik / Click measurement</a></aside><Script id="affiliate-amazon-tracking" src="/affiliate-amazon-tracking.js" strategy="afterInteractive" /></body></html>;
 }
