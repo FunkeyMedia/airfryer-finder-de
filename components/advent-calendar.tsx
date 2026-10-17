@@ -59,7 +59,7 @@ export function AdventCalendar() {
         <p>Vier Geschenkideen für eine knusprige Adventszeit – entdecke Rezept-Adventskalender für deine Heißluftfritteuse.</p>
       </div>
       <div className="advent-grid">
-        {calendars.map(calendar => <a key={calendar.asin} className="advent-card" href={`https://www.amazon.de/dp/${calendar.asin}?tag=onlinestarkei-21`} target="_blank" rel="sponsored nofollow noopener noreferrer">
+        {calendars.map(calendar => <a key={calendar.asin} className="advent-card" href={`https://www.amazon.de/dp/${calendar.asin}?tag=fkm-airfryerfinder-21`} target="_blank" rel="sponsored nofollow noopener noreferrer">
           <CalendarCover calendar={calendar} />
           <div className="advent-copy">
             <span className="advent-label">{calendar.label} · Buch</span>

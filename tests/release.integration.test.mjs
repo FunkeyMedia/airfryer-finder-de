@@ -90,7 +90,7 @@ test("the main finder-to-offer path is reachable and keeps affiliate disclosure"
   assert.match(finder, /Für wie viele Personen kochst du meistens\?/);
 
   const product = await page("/airfryer/ninja-af500eusd-b0gss34zym");
-  assert.match(product, /href="https:\/\/www\.amazon\.de\/dp\/B0GSS34ZYM[^\"]*tag=onlinestarkei-21/);
+  assert.match(product, /href="https:\/\/www\.amazon\.de\/dp\/B0GSS34ZYM[^\"]*tag=fkm-airfryerfinder-21/);
   assert.match(product, /rel="nofollow sponsored noopener"/);
   assert.match(product, /Affiliate-Link/);
 });
@@ -103,7 +103,7 @@ test("every catalog item has a local image and a correctly tagged Amazon link", 
   for (const product of products) {
     assert.ok(existsSync(`public/products/${product.asin}.webp`), `missing image for ${product.asin}`);
     assert.match(product.affiliateUrl, new RegExp(`^https://www\\.amazon\\.de/dp/${product.asin}\\?`));
-    assert.match(product.affiliateUrl, /[?&]tag=onlinestarkei-21(?:&|$)/);
+    assert.match(product.affiliateUrl, /[?&]tag=fkm-airfryerfinder-21(?:&|$)/);
   }
 });
 

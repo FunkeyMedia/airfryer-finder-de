@@ -39,7 +39,7 @@ export default function Privacy() {
 
       <h2>5. Weiterleitung zu Amazon</h2>
       <p>
-        Affiliate-Links öffnen Amazon.de in einem neuen Tab. Erst mit dem Klick verlässt du unsere Website. Amazon verarbeitet Daten ab diesem Zeitpunkt nach eigener Verantwortung und kann den Partner-Tag onlinestarkei-21 zuordnen.
+        Affiliate-Links öffnen Amazon.de in einem neuen Tab. Erst mit dem Klick verlässt du unsere Website. Amazon verarbeitet Daten ab diesem Zeitpunkt nach eigener Verantwortung und kann den Partner-Tag fkm-airfryerfinder-21 zuordnen.
       </p>
 
       <h2>6. Amazon Creators API und Produktbilder</h2>
